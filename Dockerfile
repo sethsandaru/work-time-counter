@@ -64,6 +64,8 @@ RUN set -x \
 
 COPY tags/nginx /
 
+USER root
+
 EXPOSE 80
 
-CMD ["/sbin/runit-wrapper"]
+CMD ["/sbin/runit/-wrapper"]

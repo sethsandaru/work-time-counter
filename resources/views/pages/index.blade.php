@@ -36,7 +36,7 @@
 
                 @if($notes->count() == 0)
                     <tr>
-                        <td colspan="4">Empty result</td>
+                        <td colspan="5">Empty result</td>
                     </tr>
                 @endif
             </tbody>

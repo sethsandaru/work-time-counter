@@ -1,26 +1,25 @@
 version: '3.3'
 services:
   db:
-    image: mariadb
+    image: mysql:5.7
     volumes:
       - ./db_data:/var/lib/mysql
     restart: always
     ports:
       - 3308:3306
     environment:
-      MYSQL_ROOT_PASSWORD: 123qwe
-      MYSQL_DATABASE: mpire_vinpro
-      MYSQL_USER: mpire_vinpro
-      MYSQL_PASSWORD: 123qwe
+      MYSQL_ROOT_PASSWORD: qwerty123
+      MYSQL_DATABASE: workcounter
+      MYSQL_USER: workcounter
+      MYSQL_PASSWORD: qwerty123
   php:
-    image: sethsandaru/nginx-php-7-2
+    image: globalmpire/alpine-php7-fpm-phalcon34
     container_name: sethphat-counter
     ports:
       - 82:80
     volumes:
       - ./:/var/www/html
+    environment:
+      XDEBUG_ENABLE: 0
     links:
       - db:db
-#      - redis:redis
-#  redis:
-#    image: redis
