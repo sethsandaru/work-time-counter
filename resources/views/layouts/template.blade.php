@@ -5,14 +5,9 @@
     <title>{{env('APP_NAME')}}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="{{asset('js/underscore.js')}}"></script>
-    <script src="{{asset('js/jquery.noty.js')}}"></script>
-    <script src="{{asset('js/toaster.js')}}"></script>
-    <script src="{{asset('js/ajax_service.js')}}"></script>
+    @foreach (\App\Libraries\AssetManager::$css as $css_file)
+        <link rel="stylesheet" href="{{$css_file}}" />
+    @endforeach
 </head>
 <body>
 
@@ -37,6 +32,9 @@
     </div>
 </div>
 
+@foreach (\App\Libraries\AssetManager::$js as $js_file)
+    <script src="{{$js_file}}"></script>
+@endforeach
 
 </body>
 </html>

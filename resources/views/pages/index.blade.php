@@ -10,6 +10,13 @@
         </div>
     </div>
 
+    <form method="get" class="mt-4 mb-4 form-inline">
+        <input type="text" class="form-control mr-1" name="keyword" placeholder="Keyword to search" value="{{request('keyword', '')}}">
+        <input type="text" class="form-control mr-1 dateFrom" name="date_from" placeholder="Created From" value="{{request('date_from', '')}}">
+        <input type="text" class="form-control mr-1 dateTo" name="date_to" placeholder="Created To" value="{{request('date_to', '')}}">
+        <button class="btn btn-secondary">Filter</button>
+    </form>
+
     <div>
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -43,7 +50,7 @@
         </table>
 
         <div class="text-center">
-            {!! $notes->links() !!}
+            {!! $notes->appends(request()->all())->links() !!}
         </div>
     </div>
 @endsection
